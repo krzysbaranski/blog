@@ -10,7 +10,7 @@ WITH
   FROM
     UNNEST(GENERATE_ARRAY(0, 10)) AS num )
 SELECT
-  e.seq_date,
+  seq.seq_date,
   SUM(value) AS cumulative
 FROM
   seq_dates seq
@@ -25,7 +25,7 @@ CROSS JOIN (
 ) data
 WHERE
   (data.d<=seq.seq_date)
-GROUP BY e.seq_date
+GROUP BY seq.seq_date
 ```
 
 - Output
